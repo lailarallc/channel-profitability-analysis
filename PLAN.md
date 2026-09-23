@@ -163,3 +163,9 @@ check again.
 - **Next review:** 2026-06-22
 
 <!-- Entries are added by /improve — don't delete this section -->
+
+### 2026-09-23 — Audit (health check only)
+- **Findings:** 0 critical, 6 important, 4 nice-to-have
+- **Top concerns:** Workflow files are stale (PLAN arc/DoD unchecked despite v2.0 shipping, $25.6M retired figure in Goal, HANDOFF last entry 2026-07-24, /improve 3 months overdue). The 8 MDX narrative files plus TrendChart/ChannelChart/CalloutCard are no longer rendered, yet test_prose_data.py validates that dead prose while the live hero and App prose go untested (hero says margins 44-54% on a CY2025 basis while the default annual-average view shows Whole Foods at 55.6%). generate_json.py builds a DSN with a literal REDACTED password and swallows all DB errors, so a refresh silently falls back to the 2026-06-13 snapshot.
+- **Action taken:** Audit only — no fixes this session
+- **Next review:** 2026-10-21
