@@ -8,6 +8,8 @@ import json
 import os
 from pathlib import Path
 
+import prod_guard
+
 try:
     import psycopg2
     import psycopg2.extras
@@ -213,6 +215,7 @@ def _pg_connect():
         if not pw:
             return None
         dsn = f"postgresql://postgres:REDACTED@localhost:5432/cinderhaven"
+    prod_guard.check(dsn)  # refuses a fly tunnel to production
     try:
         return psycopg2.connect(dsn)
     except Exception:
