@@ -41,7 +41,7 @@ FAILURES.md. Project brief exists in Downloads as reference.
 
 **Why:** U5 proved the full pipeline (JSON → MDX → React → D3) with headline, revenue, and deductions sections. U6 completed the remaining four: fines, operational overhead, contribution margins, and capital allocation recommendations.
 
-**State:** All 7 sections render with 4 interactive D3 charts, click-to-pin callout cards, contribution table, and 3 ranked allocation recommendations. DTC has worst margin (71.6%), Costco highest deduction intensity (8.5%), label fines are $222K. U1–U6 complete. U7 (polish + deploy) remains.
+**State:** All 7 sections render with 4 interactive D3 charts, click-to-pin callout cards, contribution table, and 3 ranked allocation recommendations. DTC has worst margin (71.6%), club retailer highest deduction intensity (8.5%), label fines are $222K. U1–U6 complete. U7 (polish + deploy) remains.
 
 **Next:** Start U7 — add Cinderhaven cold-start orientation paragraph, review responsive/print, test production build, deploy to Cloudflare Pages.
 
@@ -266,7 +266,7 @@ FAILURES.md. Project brief exists in Downloads as reference.
 - Deployed both otif-blind-spot and channel-profitability-analysis via OAuth fallback (API token was stale)
 - User set new CLOUDFLARE_API_TOKEN via `setx` — will take effect next session
 
-**State:** Site live at channels.lailarallc.com. Capital Allocation cards now show real dispute figures for all time filters (FY2026: $148K overhead, ~513 Walmart disputes; Full Range: $186K, ~637). All changes committed and pushed to origin. Clean working tree.
+**State:** Site live at channels.lailarallc.com. Capital Allocation cards now show real dispute figures for all time filters (FY2026: $148K overhead, ~513 national mass retailer disputes; Full Range: $186K, ~637). All changes committed and pushed to origin. Clean working tree.
 
 **Next:** Maintenance mode. `/improve` audit due 2026-06-22. PLAN.md Goal section still has stale margin figures (cosmetic). DEDUCTIONS and DISPUTE_DATA constants in generate_json.py were updated by a linter mid-session — verify the new values are correct if figures look off.
 

@@ -24,7 +24,7 @@ tags:
 
 ## Context
 
-Static data-narrative sites (Astro + MDX, Next.js + MDX, etc.) embed numeric claims directly in prose: "DTC retains 83 cents of every dollar," "compliance fines total $872K," "Walmart margin is 80.3%." These claims are hardcoded strings, invisible to type checkers and linters, and silently become wrong when upstream data changes.
+Static data-narrative sites (Astro + MDX, Next.js + MDX, etc.) embed numeric claims directly in prose: "DTC retains 83 cents of every dollar," "compliance fines total $872K," "National mass retailer margin is 80.3%." These claims are hardcoded strings, invisible to type checkers and linters, and silently become wrong when upstream data changes.
 
 In this project (Cinderhaven channel profitability analysis), a 17x revenue scale-up in Postgres changed every channel's absolute dollar amounts and shifted relative rankings — distributors moved from middle-of-pack to best-margin channels, DTC dropped from 92 cents retained to 83. Without automated validation, 33 prose claims across 8 MDX files would have shipped incorrect numbers to readers.
 
@@ -66,8 +66,8 @@ The script embeds snapshot constants (last-known-good values from Postgres) and 
 
 ```python
 FISCAL_REVENUE = {
-    "Walmart": 10_894_584,
-    "Kroger":   8_766_437,
+    "National mass retailer": 10_894_584,
+    "Conventional grocer":   8_766_437,
     # ... all channels
 }
 ```
