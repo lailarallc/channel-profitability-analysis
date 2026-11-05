@@ -5,6 +5,7 @@ import { min, max } from 'd3-array';
 import { line as d3Line } from 'd3-shape';
 import { SEGMENT_COLORS, FONTS, CHART_COLORS, DIM_OPACITY } from './chartUtils';
 import type { TrendQuarter } from '../../lib/computeMetrics';
+import { channelLabel } from '../../lib/displayLabels';
 
 interface MarginEvolutionChartProps {
   trends: TrendQuarter[];
@@ -12,7 +13,7 @@ interface MarginEvolutionChartProps {
   footnote?: string;
 }
 
-const MARGIN = { top: 20, right: 140, bottom: 40, left: 50 };
+const MARGIN = { top: 20, right: 180, bottom: 40, left: 50 };
 const HEIGHT = 400;
 
 const COLOR_MAP: Record<string, string> = {
@@ -158,7 +159,7 @@ export default function MarginEvolutionChart({ trends, channelFilter, footnote }
         .attr('fill', label.color)
         .attr('opacity', label.opacity)
         .style('cursor', 'pointer')
-        .text(`${label.channel} ${label.margin.toFixed(1)}%`)
+        .text(`${channelLabel(label.channel)} ${label.margin.toFixed(1)}%`)
         .on('click', () => setIsolated(prev => prev === label.channel ? null : label.channel));
     }
   }, [trends, channelFilter, isolated]);
@@ -178,7 +179,7 @@ export default function MarginEvolutionChart({ trends, channelFilter, footnote }
           color: CHART_COLORS.axisText, margin: 0,
         }}>
           {footnote && <>{footnote} · </>}
-          {isolated ? `Showing ${isolated}` : 'Click a line to isolate'}
+          {isolated ? `Showing ${channelLabel(isolated, false)}` : 'Click a line to isolate'}
         </p>
         {isolated && (
           <button

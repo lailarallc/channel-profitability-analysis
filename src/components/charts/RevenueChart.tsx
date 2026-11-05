@@ -3,6 +3,7 @@ import { select } from 'd3-selection';
 import { scaleLinear, scaleBand } from 'd3-scale';
 import { max, median } from 'd3-array';
 import { SEGMENT_COLORS, FONTS, CHART_COLORS, formatCompact } from './chartUtils';
+import { channelLabel } from '../../lib/displayLabels';
 
 export interface RevenueItem {
   name: string;
@@ -15,7 +16,7 @@ interface RevenueChartProps {
   footnote?: string;
 }
 
-const MARGIN = { top: 18, right: 72, bottom: 4, left: 120 };
+const MARGIN = { top: 18, right: 72, bottom: 4, left: 160 };
 const BAR_HEIGHT = 22;
 
 const COLOR_MAP: Record<string, string> = {
@@ -72,7 +73,7 @@ export default function RevenueChart({ items, footnote }: RevenueChartProps) {
       .attr('font-family', FONTS.sans)
       .attr('font-size', '12px')
       .attr('fill', CHART_COLORS.axisText)
-      .text(d => d.name);
+      .text(d => channelLabel(d.name));
 
     g.selectAll('.val')
       .data(sorted)

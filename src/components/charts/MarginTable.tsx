@@ -1,5 +1,6 @@
 import { useState, useMemo, Fragment } from 'react';
 import { FONTS, CHART_COLORS, SEGMENT_COLORS, formatCompact } from './chartUtils';
+import { channelLabel } from '../../lib/displayLabels';
 
 export interface MarginRow {
   channel_name: string;
@@ -46,8 +47,9 @@ export default function MarginTable({ rows, highlight, periodLabel }: MarginTabl
   const sorted = useMemo(() => {
     const copy = [...rows];
     copy.sort((a, b) => {
-      const av = a[sortKey];
-      const bv = b[sortKey];
+      // Sort the Channel column by the label the reader sees, not the data key.
+      const av = sortKey === 'channel_name' ? channelLabel(a.channel_name) : a[sortKey];
+      const bv = sortKey === 'channel_name' ? channelLabel(b.channel_name) : b[sortKey];
       if (typeof av === 'string' && typeof bv === 'string') {
         return sortAsc ? av.localeCompare(bv) : bv.localeCompare(av);
       }
@@ -143,7 +145,7 @@ export default function MarginTable({ rows, highlight, periodLabel }: MarginTabl
                     marginRight: '8px',
                     verticalAlign: 'middle',
                   }} />
-                  {m.channel_name}
+                  {channelLabel(m.channel_name)}
                 </td>
                 <td style={{ padding: '8px 12px', textAlign: 'right', fontVariantNumeric: 'tabular-nums' }}>
                   {formatCompact(m.revenue)}

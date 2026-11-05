@@ -14,6 +14,7 @@ import {
   synthesizeFromTrends,
 } from '../lib/computeMetrics';
 import type { Channel, Layer, TrendQuarter } from '../lib/computeMetrics';
+import { channelLabel } from '../lib/displayLabels';
 
 type DrillState =
   | { level: 'all' }
@@ -129,7 +130,7 @@ export default function App() {
             <>
               <span style={{ margin: '0 8px', color: CHART_COLORS.disabled }}>{'›'}</span>
               <span style={{ fontWeight: 600, color: CHART_COLORS.ink }}>
-                {drill.channelName}
+                {channelLabel(drill.channelName)}
               </span>
             </>
           )}
@@ -166,7 +167,7 @@ export default function App() {
             <optgroup label={`${SEGMENT_DISPLAY[drill.segmentType]} channels`}>
               {segmentChannels.map(c => (
                 <option key={c.channel_name} value={c.channel_name}>
-                  {c.channel_name}
+                  {channelLabel(c.channel_name)}
                 </option>
               ))}
             </optgroup>

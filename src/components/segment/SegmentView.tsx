@@ -8,6 +8,7 @@ import {
 import WaterfallChart from '../charts/WaterfallChart';
 import { SEGMENT_COLORS, FONTS, CHART_COLORS, formatCompact } from '../charts/chartUtils';
 import type { Channel, Layer } from '../../lib/computeMetrics';
+import { channelLabel } from '../../lib/displayLabels';
 
 interface SegmentViewProps {
   segmentType: string;
@@ -116,7 +117,7 @@ export default function SegmentView({ segmentType, channels, layers, periodLabel
               onClick={() => onDrillToChannel(ch.name)}
               style={{
                 display: 'grid',
-                gridTemplateColumns: '160px 1fr 100px 80px',
+                gridTemplateColumns: '200px 1fr 100px 80px',
                 alignItems: 'center',
                 gap: '16px',
                 padding: '12px 16px',
@@ -134,7 +135,7 @@ export default function SegmentView({ segmentType, channels, layers, periodLabel
                 fontWeight: 600,
                 color: CHART_COLORS.ink,
               }}>
-                {ch.name}
+                {channelLabel(ch.name)}
               </span>
 
               <div style={{

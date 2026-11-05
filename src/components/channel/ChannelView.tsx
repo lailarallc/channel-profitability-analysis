@@ -4,6 +4,7 @@ import WaterfallChart from '../charts/WaterfallChart';
 import MarginEvolutionChart from '../charts/MarginEvolutionChart';
 import { FONTS, CHART_COLORS, WATERFALL_COLORS, formatCompact } from '../charts/chartUtils';
 import type { Layer, BreakdownItem, TrendQuarter } from '../../lib/computeMetrics';
+import { channelLabel } from '../../lib/displayLabels';
 
 interface ChannelViewProps {
   channelName: string;
@@ -122,7 +123,7 @@ export default function ChannelView({ channelName, layers, trends, periodLabel, 
           color: CHART_COLORS.ink,
           margin: 0,
         }}>
-          {channelName}
+          {channelLabel(channelName)}
         </h2>
         <span style={{
           fontFamily: FONTS.sans,

@@ -3,6 +3,7 @@ import { select } from 'd3-selection';
 import { scaleLinear, scaleSqrt } from 'd3-scale';
 import { max } from 'd3-array';
 import { SEGMENT_COLORS, FONTS, CHART_COLORS, formatCompact } from './chartUtils';
+import { channelLabel } from '../../lib/displayLabels';
 
 export interface OverheadItem {
   name: string;
@@ -116,7 +117,7 @@ export default function OverheadScatterChart({ items, footnote }: OverheadScatte
       .attr('text-anchor', 'middle')
       .attr('font-family', FONTS.sans).attr('font-size', '10px')
       .attr('fill', CHART_COLORS.ink)
-      .text(d => d.name);
+      .text(d => channelLabel(d.name));
   }, [filtered]);
 
   return (

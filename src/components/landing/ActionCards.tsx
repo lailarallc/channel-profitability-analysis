@@ -1,4 +1,5 @@
 import { FONTS, CHART_COLORS, formatCompact, formatPercent } from '../charts/chartUtils';
+import { channelLabel } from '../../lib/displayLabels';
 
 interface ActionCardData {
   priority: number;
@@ -44,11 +45,11 @@ export default function ActionCards({
       title: 'Restructure dispute triage',
       metric: formatCompact(totalOverhead),
       metricLabel: 'annual dispute overhead',
-      body: `Walmart alone accounts for ${formatCompact(walmartOverhead)} on ~${walmartDisputes.toLocaleString()} disputes/yr. Automate low-value claims, raise the filing threshold, or eliminate disputes where recovery is negligible.`,
+      body: `${channelLabel('Walmart')} alone accounts for ${formatCompact(walmartOverhead)} on ~${walmartDisputes.toLocaleString()} disputes/yr. Automate low-value claims, raise the filing threshold, or eliminate disputes where recovery is negligible.`,
     },
     {
       priority: 3,
-      title: 'Review Costco economics',
+      title: `Review ${channelLabel('Costco', false)} economics`,
       metric: formatPercent(costcoMarginPct),
       metricLabel: 'contribution margin — lowest retailer',
       body: `Trade deduction rate of ${costcoDeductionRate.toFixed(1)}% of revenue — highest among retailers. A trade-term renegotiation or promotional rebalancing could close part of the gap.`,
